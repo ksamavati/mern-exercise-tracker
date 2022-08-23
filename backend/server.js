@@ -12,7 +12,7 @@ app.use(express.json());
 
 const uri = process.env.ATLAS_URI;
 
-mongoose.connect(process.env.ATLAS_URI, { useNewUrlParser: true, useCreateIndex: true }
+mongoose.connect('mongodb+srv://ksamavati:1234@cluster0.gvg7nvw.mongodb.net/?retryWrites=true&w=majority', { useNewUrlParser: true, useCreateIndex: true }
 );
 const connection = mongoose.connection;
 connection.once('open', () => {
