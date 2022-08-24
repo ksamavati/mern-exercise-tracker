@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const fs = require('fs');
+const path = require('path');
 
 require('dotenv').config();
 
@@ -22,9 +24,24 @@ connection.once('open', () => {
 const exercisesRouter = require('./routes/exercises');
 const usersRouter = require('./routes/users');
 
+// if this is running on live server (Heroku)
+if (process.env.NODE_ENV === "production") {
+	app.use(express.static('../build'));
+	app.get('*', (req, res_) => {
+		req.sendFile(path.resolve(__dirname, '../build', 'index.html'));
+	})
+}
+
+// app.get('/', function (req, res) {
+// 	res.sendFile(path.join(__dirname, '/../build/index.html'));
+// });
+// app.use(express.static(path.join(__dirname, '../public/index.html')))
+// app.use('/', (req, res) => {
+// 	res.sendFile(path.join(__dirname, '/../public/index.html'))
+// })
+//  express.static(__dirname + '/../public/index.html'));
 app.use('/exercises', exercisesRouter);
 app.use('/users', usersRouter);
-
 
 app.listen(port, () => {
 	console.log(`Server is running on port: ${port}`);
