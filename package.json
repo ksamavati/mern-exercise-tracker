@@ -14,6 +14,7 @@
 		"express": "^4.18.1",
 		"fs": "^0.0.1-security",
 		"mongoose": "^5.10.12",
+		"os": "^0.1.2",
 		"os-browserify": "^0.3.0",
 		"path": "^0.12.7",
 		"react": "^18.2.0",
