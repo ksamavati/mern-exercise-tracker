@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
-import SERVER_URL from '../setURL';
 
 export default class CreateExercise extends Component {
 	constructor(props) {
@@ -25,7 +24,7 @@ export default class CreateExercise extends Component {
 
 	//lifecycle method that runs right before this component loads
 	componentDidMount() {
-		axios.get(SERVER_URL + '/users/')
+		axios.get(process.env.REACT_APP_SERVER_URL + '/users/')
 			.then(response => {
 				if (response.data.length > 0) {
 					this.setState({
@@ -75,7 +74,7 @@ export default class CreateExercise extends Component {
 
 		console.log(exercise);
 
-		axios.post(SERVER_URL + '/exercises/add', exercise)
+		axios.post(process.env.REACT_APP_SERVER_URL + '/exercises/add', exercise)
 			.then(res => console.log(res.data));
 
 		window.location = '/';
