@@ -24,7 +24,7 @@ export default class CreateExercise extends Component {
 
 	//lifecycle method that runs right before this component loads
 	componentDidMount() {
-		axios.get(process.env.REACT_APP_SERVER_URL + '/users/')
+		axios.get('/users/')
 			.then(response => {
 				if (response.data.length > 0) {
 					this.setState({
