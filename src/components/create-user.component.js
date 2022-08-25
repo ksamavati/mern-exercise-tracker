@@ -27,7 +27,7 @@ export default class CreateUser extends Component {
 		}
 
 		// Sends POST request to first parameter URL, with a JSON object of second param
-		axios.post(process.env.REACT_APP_SERVER_URL + '/users/add', user)
+		axios.post('/users/add', user)
 			.then(res => console.log(res.data));
 
 		this.setState({

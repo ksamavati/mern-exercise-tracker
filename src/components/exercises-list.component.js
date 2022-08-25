@@ -35,7 +35,7 @@ export default class ExercisesList extends Component {
 
 	deleteExercise(id) {
 		// send delete request to backend
-		axios.delete(process.env.REACT_APP_SERVER_URL + '/exercises/' + id)
+		axios.delete('/exercises/' + id)
 			.then(response => { console.log(response.data) });
 
 		// update frontend display by deleting from state (react will automatically update page)

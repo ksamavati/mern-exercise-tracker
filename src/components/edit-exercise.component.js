@@ -22,7 +22,7 @@ const EditExercise = (props) => {
 	const exerciseID = useParams().id;
 
 	useEffect(() => {
-		axios.get(process.env.REACT_APP_SERVER_URL + '/exercises/' + exerciseID) //.match.params.id originally, changed to functional component const
+		axios.get('/exercises/' + exerciseID) //.match.params.id originally, changed to functional component const
 			.then(response => {
 				setUsername(response.data.username);
 				setDescription(response.data.description);

@@ -74,7 +74,7 @@ export default class CreateExercise extends Component {
 
 		console.log(exercise);
 
-		axios.post(process.env.REACT_APP_SERVER_URL + '/exercises/add', exercise)
+		axios.post('/exercises/add', exercise)
 			.then(res => console.log(res.data));
 
 		window.location = '/';
