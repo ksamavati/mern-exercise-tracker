@@ -33,7 +33,7 @@ const EditExercise = (props) => {
 				console.log(error);
 			})
 
-		axios.get(process.env.REACT_APP_SERVER_URL + '/users/')
+		axios.get('/users/')
 			.then(response => {
 				if (response.data.length > 0) {
 					setUsers(response.data.map(user => user.username))
@@ -74,7 +74,7 @@ const EditExercise = (props) => {
 
 		console.log(exerciseID);
 
-		axios.post(process.env.REACT_APP_SERVER_URL + '/exercises/update/' + exerciseID, exercise)
+		axios.post('/exercises/update/' + exerciseID, exercise)
 			.then(res => console.log(res.data));
 
 		window.location = '/';
