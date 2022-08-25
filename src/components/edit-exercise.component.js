@@ -3,6 +3,7 @@ import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { useParams } from 'react-router-dom';
+import SERVER_URL from '../setURL';
 
 const EditExercise = (props) => {
 	// const [myState, setState] = useState({
@@ -22,7 +23,7 @@ const EditExercise = (props) => {
 	const exerciseID = useParams().id;
 
 	useEffect(() => {
-		axios.get('http://localhost:' + process.env.PORT + '/exercises/' + exerciseID) //.match.params.id originally, changed to functional component const
+		axios.get(SERVER_URL + '/exercises/' + exerciseID) //.match.params.id originally, changed to functional component const
 			.then(response => {
 				setUsername(response.data.username);
 				setDescription(response.data.description);
@@ -33,7 +34,7 @@ const EditExercise = (props) => {
 				console.log(error);
 			})
 
-		axios.get('http://localhost:' + process.env.PORT + '/users/')
+		axios.get(SERVER_URL + '/users/')
 			.then(response => {
 				if (response.data.length > 0) {
 					setUsers(response.data.map(user => user.username))
@@ -74,7 +75,7 @@ const EditExercise = (props) => {
 
 		console.log(exerciseID);
 
-		axios.post('http://localhost:' + process.env.PORT + '/exercises/update/' + exerciseID, exercise)
+		axios.post(SERVER_URL + '/exercises/update/' + exerciseID, exercise)
 			.then(res => console.log(res.data));
 
 		window.location = '/';

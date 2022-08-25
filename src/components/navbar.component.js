@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import SERVER_URL from '../setURL';
 
 export default class Navbar extends Component {
 

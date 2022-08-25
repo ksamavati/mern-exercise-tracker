@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import SERVER_URL from '../setURL';
 
 export default class CreateUser extends Component {
 	constructor(props) {
@@ -27,7 +28,7 @@ export default class CreateUser extends Component {
 		}
 
 		// Sends POST request to first parameter URL, with a JSON object of second param
-		axios.post('http://localhost:5000/users/add', user)
+		axios.post(SERVER_URL + '/users/add', user)
 			.then(res => console.log(res.data));
 
 		this.setState({

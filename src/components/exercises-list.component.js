@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import SERVER_URL from '../setURL';
 
 const Exercise = props => (
 	<tr>
@@ -24,7 +25,7 @@ export default class ExercisesList extends Component {
 	}
 
 	componentDidMount() {
-		axios.get('http://localhost:' + process.env.PORT + '/exercises/')
+		axios.get(SERVER_URL + '/exercises/')
 			.then(response => {
 				this.setState({ exercises: response.data })
 			})
@@ -35,7 +36,7 @@ export default class ExercisesList extends Component {
 
 	deleteExercise(id) {
 		// send delete request to backend
-		axios.delete('http://localhost:' + process.env.PORT + '/exercises/' + id)
+		axios.delete(SERVER_URL + '/exercises/' + id)
 			.then(response => { console.log(response.data) });
 
 		// update frontend display by deleting from state (react will automatically update page)
