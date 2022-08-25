@@ -26,7 +26,7 @@ class EditExercise extends Component {
 
   componentDidMount() {
 		console.log(this.props.match.params.id);
-    axios.get('http://localhost:5000/exercises/'+this.props.match.params.id) //.match.params.id originally, changed in react v18
+    axios.get('http://localhost:' + process.env.PORT + '/exercises/'+this.props.match.params.id) //.match.params.id originally, changed in react v18
       .then(response => {
         this.setState({
           username: response.data.username,
@@ -39,7 +39,7 @@ class EditExercise extends Component {
         console.log(error);
       })
 
-    axios.get('http://localhost:5000/users/')
+    axios.get('http://localhost:' + process.env.PORT + '/users/')
       .then(response => {
         if (response.data.length > 0) {
           this.setState({
@@ -89,7 +89,7 @@ class EditExercise extends Component {
 
     console.log(exercise);
 
-    axios.post('http://localhost:5000/exercises/update/' + this.props.match.params.id, exercise)
+    axios.post('http://localhost:' + process.env.PORT + '/exercises/update/' + this.props.match.params.id, exercise)
       .then(res => console.log(res.data));
 
     window.location = '/';

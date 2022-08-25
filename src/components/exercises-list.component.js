@@ -24,7 +24,7 @@ export default class ExercisesList extends Component {
 	}
 
 	componentDidMount() {
-		axios.get('http://localhost:5000/exercises/')
+		axios.get('http://localhost:' + process.env.PORT + '/exercises/')
 			.then(response => {
 				this.setState({ exercises: response.data })
 			})
@@ -35,7 +35,7 @@ export default class ExercisesList extends Component {
 
 	deleteExercise(id) {
 		// send delete request to backend
-		axios.delete('http://localhost:5000/exercises/' + id)
+		axios.delete('http://localhost:' + process.env.PORT + '/exercises/' + id)
 			.then(response => { console.log(response.data) });
 
 		// update frontend display by deleting from state (react will automatically update page)

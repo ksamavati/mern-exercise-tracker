@@ -22,7 +22,7 @@ const EditExercise = (props) => {
 	const exerciseID = useParams().id;
 
 	useEffect(() => {
-		axios.get('http://localhost:5000/exercises/' + exerciseID) //.match.params.id originally, changed to functional component const
+		axios.get('http://localhost:' + process.env.PORT + '/exercises/' + exerciseID) //.match.params.id originally, changed to functional component const
 			.then(response => {
 				setUsername(response.data.username);
 				setDescription(response.data.description);
@@ -33,7 +33,7 @@ const EditExercise = (props) => {
 				console.log(error);
 			})
 
-		axios.get('http://localhost:5000/users/')
+		axios.get('http://localhost:' + process.env.PORT + '/users/')
 			.then(response => {
 				if (response.data.length > 0) {
 					setUsers(response.data.map(user => user.username))
@@ -74,7 +74,7 @@ const EditExercise = (props) => {
 
 		console.log(exerciseID);
 
-		axios.post('http://localhost:5000/exercises/update/' + exerciseID, exercise)
+		axios.post('http://localhost:' + process.env.PORT + '/exercises/update/' + exerciseID, exercise)
 			.then(res => console.log(res.data));
 
 		window.location = '/';
